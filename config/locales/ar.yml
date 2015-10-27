@@ -1,0 +1,166 @@
+ar:
+  add: إضافة
+
+  arabic: العربية
+
+  choose_setup_field: اختر حقل الإعداد
+
+  client_english: الإنجليزية العميل
+
+  client_name: اسم العميل
+
+  client_type: نوع العميل
+
+  client_type_arabic: العميل اكتب عربي
+
+  client_type_english: نوع العميل اللغة الإنجليزية
+
+  clients: العملاء
+
+  delete: حذف
+
+  devise:
+    confirmations:
+      new:
+        resend_confirmation_instructions: إعادة إرسال رسالة تأكيد التعليمات
+      
+    mailer:
+      confirmation_instructions:
+        action: عمل
+      
+        greeting: تحية
+      
+        instruction: تعليمات
+      
+      reset_password_instructions:
+        action: عمل
+      
+        greeting: تحية
+      
+        instruction: تعليمات
+      
+        instruction_2: تعليمات 2
+      
+        instruction_3: تعليمات 3
+      
+      unlock_instructions:
+        action: عمل
+      
+        greeting: تحية
+      
+        instruction: تعليمات
+      
+        message: رسالة
+      
+    passwords:
+      edit:
+        change_my_password: تغيير كلمة المرور الخاصة بي
+      
+        change_your_password: تغيير كلمة المرور الخاصة بك
+      
+        confirm_new_password: تأكيد كلمة المرور الجديدة
+      
+        new_password: كلمة المرور الجديدة
+      
+      new:
+        forgot_your_password: نسيت كلمة المرور الخاصة بك
+      
+        send_me_reset_password_instructions: إرسال لي إرشادات كلمة المرور إعادة تعيين
+      
+    registrations:
+      edit:
+        are_you_sure: هل أنت متأكد
+      
+        back: مرة أخرى
+      
+        cancel_my_account: إلغاء الحساب الخاص بي
+      
+        leave_blank_if_you_don_t_want_to_change_it: اترك المساحة فارغة إذا كنت لا تريد تغييره t
+      
+        title: العنوان
+      
+        unhappy: سعيدة
+      
+        update: التحديث
+      
+        we_need_your_current_password_to_confirm_your_changes: ونحن بحاجة إلى كلمة المرور الحالية لتأكيد التغييرات الخاصة بك
+      
+      new:
+        sign_up: التسجيل
+      
+    sessions:
+      new:
+        sign_in: تسجيل الدخول
+      
+    shared:
+      links:
+        didn_t_receive_confirmation_instructions: تي ديدن تلقي تعليمات تأكيد
+      
+        didn_t_receive_unlock_instructions: تلقي تي ديدن فتح التعليمات
+      
+        forgot_your_password: نسيت كلمة المرور الخاصة بك
+      
+        sign_in: تسجيل الدخول
+      
+        sign_in_with_provider: تسجيل الدخول باستخدام موفر
+      
+        sign_up: التسجيل
+      
+    unlocks:
+      new:
+        resend_unlock_instructions: إعادة إرسال فتح التعليمات
+      
+  doctello: دوكتيلو
+
+  document: الوثيقة
+
+  documents: الوثائق
+
+  english: الإنكليزية
+
+  file_arabic: ملف اللغة العربية
+
+  file_attachment: ملف مرفق
+
+  file_english: ملف اللغة الإنجليزية
+
+  file_name: اسم الملف
+
+  file_primary_types: أنواع الملفات الرئيسية
+
+  file_secondary_types: أنواع الملفات الثانوية
+
+  files: الملفات
+
+  files_primary_type: نوع الملفات الرئيسي
+
+  files_primary_type_arabic: كتابة ملفات الابتدائي اللغة العربية
+
+  files_primary_type_english: نوع الملفات الأساسية الإنجليزية
+
+  files_secondary_type_arabic: نوع الملفات الثانوية العربية
+
+  files_secondary_type_english: نوع الملفات الثانوية الإنجليزية
+
+  hello: مرحبا بالعالم
+
+  home: الصفحة الرئيسية
+
+  id: معرف
+
+  logout: تسجيل الخروج
+
+  name_arabic: اسم اللغة العربية
+
+  name_english: اسم الإنجليزية
+
+  notes: وتلاحظ
+
+  order: ترتيب
+
+  save: حفظ
+
+  setup: برنامج الإعداد
+
+  tree: شجرة
+

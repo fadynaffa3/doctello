@@ -1,0 +1,31 @@
+:javascript
+  $('#setup_link').addClass('active');
+= stylesheet_link_tag 'setup'
+#wrapper
+  = render partial: 'home/sidebar'
+  #page-content-wrapper
+    .container-fluid
+      .row
+        .col-lg-12
+          = form_for @files_primary_type, url: {action: "update"} do |f|
+            .form-group
+              %label{:for => 'file_name_en'}
+                = t('files_primary_type_english')
+              = f.text_field :name_en, id: 'file_name_en', class: 'form-control'
+            .form-group
+              %label{:for => 'file_name_ar'}
+                = t('files_primary_type_arabic')
+              = f.text_field :name_ar, id: 'file_name_en', class: 'form-control'
+            .form-group
+              %label{:for => 'yearly'}
+                = t('yearly_file')
+              = f.check_box :yearly, id: 'yearly'
+            .col-md-6
+              %button{:type => 'submit', :class => 'btn btn-default'}
+                = t('save')
+          = form_for @files_primary_type , :html => {:method => 'delete'}, url: {:method => 'delete', :action => 'destroy'} do |f|
+            .col-md-6
+              %button{:type => 'submit', :class => 'btn btn-danger'}
+                = t('delete')
+
+

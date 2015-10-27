@@ -1,0 +1,2 @@
+module ClientTypesHelper
+end

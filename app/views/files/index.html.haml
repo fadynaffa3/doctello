@@ -1,0 +1,48 @@
+:javascript
+  $('#papers_link').addClass('active');
+  $(document).ready(function() {
+    $('#new-file-type').click(function() {
+      window.location.href = "#{new_file_path}";
+    });
+    $('.file_row').click(function() {
+      window.location.href = $(this).data('link');
+    });
+  });
+= stylesheet_link_tag 'setup'
+.container-fluid
+  .row
+    .col-lg-12
+      .row.margined-bottom
+        %button#new-file-type.pull-left.glyphicon.glyphicon-plus
+          %span
+            = t('add')
+      %table.table-condensed.table-striped.full-width.table-bordered.table-hover
+        %tr
+          %th
+            = t('id')
+          %th
+            = t('client_name')
+          %th
+            = t('name_english')
+          %th
+            = t('name_arabic')
+          %th
+            = t('document')
+        - @files.each do |file|
+          %tr.clickable.file_row
+            %td
+              = file.id
+            %td
+              = file.client.name_en
+            %td
+              = file.name_en
+            %td
+              = file.name_ar
+            %td
+              = link_to(t('documents'), papers_path(:file_id => file.id), :method => :get)
+          :javascript
+            $('.file_row').last().data('link', "#{edit_file_path(:id => file.id)}");
+      .row
+        = paginate @files
+      .row
+        = page_entries_info @files

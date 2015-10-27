@@ -1,0 +1,30 @@
+:javascript
+  $('#papers_link').addClass('active');
+= stylesheet_link_tag 'setup'
+.container-fluid
+  .row
+    .col-lg-12
+      = form_for @paper, url: {action: "update"}, html: { multipart: true } do |f|
+        = f.hidden_field :filer_id, :value => @file.id
+        .form-group
+          %label{:for => 'url'}
+            = t('file_attachment')
+          = f.file_field :url, id: 'url', class: 'form-control'
+        .form-group
+          %label{:for => 'notes'}
+            = t('notes')
+          = f.text_field :notes, id: 'notes', class: 'form-control'
+        .form-group
+          %label{:for => 'order'}
+            = t('order')
+          = f.text_field :order, id: 'order', class: 'form-control'
+        .col-md-6
+          %button{:type => 'submit', :class => 'btn btn-default'}
+            = t('save')
+      = form_for @paper , :html => {:method => 'delete'}, url: {:method => 'delete', :action => 'destroy'} do |f|
+        .col-md-6
+          = f.hidden_field :filer_id, :value => @file.id
+          %button{:type => 'submit', :class => 'btn btn-danger'}
+            = t('delete')
+
+

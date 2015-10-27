@@ -1,0 +1,10 @@
+:javascript
+  $('#setup_link').addClass('active');
+= stylesheet_link_tag 'setup'
+#wrapper
+  = render partial: 'sidebar'
+  #page-content-wrapper
+    .container-fluid
+      .row
+        .col-lg-12
+          %h1= t('choose_setup_field')

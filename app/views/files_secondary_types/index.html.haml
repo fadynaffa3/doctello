@@ -1,0 +1,47 @@
+:javascript
+  $('#setup_link').addClass('active');
+  $(document).ready(function() {
+    $('#new-files_secondary_type-type').click(function() {
+      window.location.href = "#{new_files_secondary_type_path}";
+    });
+    $('.files_secondary_type_row').click(function() {
+      window.location.href = $(this).data('link');
+    });
+  });
+= stylesheet_link_tag 'setup'
+#wrapper
+  = render partial: 'home/sidebar'
+  #page-content-wrapper
+    .container-fluid
+      .row
+        .col-lg-12
+          .row.margined-bottom
+            %button#new-files_secondary_type-type.pull-left.glyphicon.glyphicon-plus
+              %span
+                = t('add')
+          %table.table-condensed.table-striped.full-width.table-bordered.table-hover
+            %tr
+              %th
+                = t('id')
+              %th
+                = t('files_primary_type')
+              %th
+                = t('name_english')
+              %th
+                = t('name_arabic')
+            - @files_secondary_types.each do |files_secondary_type|
+              %tr.clickable.files_secondary_type_row
+                %td
+                  = files_secondary_type.id
+                %td
+                  = files_secondary_type.files_primary_type.name_en
+                %td
+                  = files_secondary_type.name_en
+                %td
+                  = files_secondary_type.name_ar
+              :javascript
+                $('.files_secondary_type_row').last().data('link', "#{edit_files_secondary_type_path(:id => files_secondary_type.id)}");
+          .row
+            = paginate @files_secondary_types
+          .row
+            = page_entries_info @files_secondary_types

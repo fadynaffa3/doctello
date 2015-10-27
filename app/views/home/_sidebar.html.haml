@@ -1,0 +1,12 @@
+#sidebar-wrapper
+  %ul.sidebar-nav
+    %li.sidebar-brand
+      = t('setup')
+    %li
+      = link_to(t('client_type'), client_types_path, :method => :get)
+    %li
+      = link_to(t('clients'), clients_path, :method => :get)
+    %li
+      = link_to(t('file_primary_types'), files_primary_types_path, :method => :get)
+    %li
+      = link_to(t('file_secondary_types'), files_secondary_types_path, :method => :get)

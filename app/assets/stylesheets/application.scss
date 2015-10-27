@@ -1,0 +1,26 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+body {font-family: "Lucida Console", Monaco, monospace}
+.navbar {margin-bottom: 0px}
+.full-width {width: 100% !important}
+tr:nth-child(even) {background: #FFF}
+tr:nth-child(odd) {background: #CCC}
+tr:nth-of-type(odd) {background-color: #CCC !important}
+.clickable {cursor: pointer}
+.margined-bottom {margin-bottom: 10px}
+#yearly_filters{display: none}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dms</title>
+  <%= stylesheet_link_tag    'application' %>
+  <% if I18n.locale.to_s == "ar" %>
+    <%= stylesheet_link_tag    'bootstrap-rtl.min.css' %>
+  <% end %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-static-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#"><%= t('doctello') %></a>
+      </div>
+      <div>
+        <ul class="nav navbar-nav">
+          <li id='home_link'><%= link_to(t('home'), root_path, :method => :get) %></li>
+          <li id='setup_link' ><%= link_to(t('setup'), setup_path, :method => :get) %></li>
+          <li id='papers_link'><%= link_to(t('files'), files_path, :method => :get) %></li>
+          <li id='tree_link'><%= link_to(t('tree'), tree_path, :method => :get) %></li>
+          <li><%= link_to(t('logout'), destroy_user_session_path, :method => :delete) %></li>
+          <% if I18n.locale.to_s == "ar" %>
+            <li><%= link_to(t("english"), "/en?locale=en") %></li>
+          <% else %>
+            <li><%= link_to(t("arabic"), "/ar?locale=ar") %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <% if flash[:error] %>
+    <script>
+      alert("<%= flash[:error] %>");
+    </script>
+  <% end %>
+  <% if notice %>
+    <p class="alert alert-success"><%= notice %></p>
+  <% end %>
+  <% if alert %>
+    <p class="alert alert-danger"><%= alert %></p>
+  <% end %>
+<%= yield %>
+
+</body>
+</html>
