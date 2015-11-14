@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151023162252) do
+ActiveRecord::Schema.define(version: 20151030074559) do
 
   create_table "client_types", force: :cascade do |t|
     t.string   "name_en"
@@ -31,6 +31,14 @@ ActiveRecord::Schema.define(version: 20151023162252) do
     t.string   "sales_tax_number"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
+  end
+
+  create_table "connections", force: :cascade do |t|
+    t.integer  "client_id"
+    t.integer  "files_primary_type_id"
+    t.integer  "files_secondary_type_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "filers", force: :cascade do |t|

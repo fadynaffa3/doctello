@@ -10,7 +10,7 @@
             .form-group
               %label{:for => 'files_primary_type'}
                 = t('client_name')
-              = f.collection_select :client_id, Client.order(:name_en),:id,:name_en, {prompt: "Select"}, {class: 'form-control'}
+              = f.collection_select :client_id, Client.order(:name_en),:id, :name_en, {:include_blank => "select"}, {class: 'form-control', onchange: 'get_primary_files(this.value);', :include_blank => true}
             .form-group
               %label{:for => 'file_name_en'}
                 = t('file_english')
@@ -34,14 +34,17 @@
             .form-group
               %label{:for => 'file_pr'}
                 = t('file_primary_type')
-              = select_tag "file_pr", content_tag(:option,'select one...',:value=>"") + options_from_collection_for_select(FilesPrimaryType.all, "id", "name_en", @file.files_secondary_type.try(:files_primary_type).try(:id)), {id: 'file_pr', class: 'form-control', onchange: 'get_secondary_files(this.value)'}
+              - if @file.files_secondary_type.present?
+                = select_tag "file_pr", content_tag(:option,'select one...',:value => "") + options_from_collection_for_select(FilesPrimaryType.where(:id => @file.files_secondary_type.try(:files_primary_type).try(:id)), "id", "name_en", @file.files_secondary_type.try(:files_primary_type).try(:id)), {id: 'file_pr', class: 'form-control', onchange: 'get_secondary_files(this.value)'}
+              - else
+                = select_tag "file_pr", content_tag(:option,'select one...',:value => ""), {id: 'file_pr', class: 'form-control', onchange: 'get_secondary_files(this.value)'}
             .form-group
               %label{:for => 'file_sc'}
                 = t('file_secondary_type')
               - if @file.files_secondary_type.present?
-                = select_tag "filer[files_secondary_type_id]", content_tag(:option,'select one...',:value=>"") + options_from_collection_for_select(@file.files_secondary_type.files_primary_type.files_secondary_types, "id", "name_en", @file.try(:files_secondary_type).try(:id)), {id: 'file_sc', class: 'form-control'}
+                = select_tag "filer[files_secondary_type_id]", content_tag(:option,'select one...',:value => "") + options_from_collection_for_select(@file.files_secondary_type.files_primary_type.files_secondary_types, "id", "name_en", @file.try(:files_secondary_type).try(:id)), {id: 'file_sc', class: 'form-control'}
               - else
-                = select_tag "filer[files_secondary_type_id]", content_tag(:option,'select one...',:value=>"") , {id: 'file_sc', class: 'form-control'}
+                = select_tag "filer[files_secondary_type_id]", content_tag(:option,'select one...',:value => "") , {id: 'file_sc', class: 'form-control'}
 
           .col-lg-1
           #yearly_filters.col-lg-5
@@ -68,30 +71,41 @@
           %button{:type => 'submit', :class => 'btn btn-danger'}
             = t('delete')
 :javascript
-  function get_secondary_files(val) {
-    if(val == '') {
-      $('#file_sc').empty();
-      $('#yearly_filters').hide();
-    }
-    else {
-      var url = "#{files_check_pr_path}?pr=" + val;
-      $.ajax({
-        type:"GET",
-        url:url,
-        success: function(data) {
-          secondary_files = data.secondary;
-          if(data.type == 1)
-            $('#yearly_filters').show();
-          else
-            $('#yearly_filters').hide();
-
-          $('#file_sc').empty();
-          $('#file_sc').append($("<option>select one... </option>").attr("value", ''));
-          for(i=0; i<secondary_files.length ;i++){
-            $('#file_sc').append($("<option>" + secondary_files[i].name_en + "</option>").attr("value", secondary_files[i].id));
-          }
+  function get_primary_files(val) {
+    $('#yearly_filters').hide();
+    $('#file_sc').empty();
+    $('#file_sc').append($("<option>select one... </option>").attr("value", ''));
+    $('#file_pr').empty();
+    $('#file_pr').append($("<option>select one... </option>").attr("value", ''));
+    var url = "#{files_check_pr_path}?client_id=" + val;
+    $.ajax({
+      type:"GET",
+      url:url,
+      success: function(data) {
+        secondary_files = data.primary;
+        for(i=0; i<secondary_files.length ;i++){
+          $('#file_pr').append($("<option>" + secondary_files[i].name_en + "</option>").attr("value", secondary_files[i].id));
         }
-      });
-    }
+      }
+    });
   }
-
+:javascript
+  function get_secondary_files(val) {
+    client_id = $('.client_id').val();
+    $('#yearly_filters').hide();
+    $('#file_sc').empty();
+    $('#file_sc').append($("<option>select one... </option>").attr("value", ''));
+    var url = "#{files_check_sc_path}?client_id=" +client_id +"&pr=" + val;
+    $.ajax({
+      type:"GET",
+      url:url,
+      success: function(data) {
+        secondary_files = data.secondary;
+        if(data.type == 1)
+          $('#yearly_filters').show();
+        for(i=0; i<secondary_files.length ;i++){
+          $('#file_sc').append($("<option>" + secondary_files[i].name_en + "</option>").attr("value", secondary_files[i].id));
+        }
+      }
+    });
+  }

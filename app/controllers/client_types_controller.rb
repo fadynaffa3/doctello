@@ -13,9 +13,6 @@ class ClientTypesController < ApplicationController
     if @client_type.save
       redirect_to action: 'index'
     else
-      @client_type.errors.each do |error|
-        flash[:error] = error
-      end
       render :new
     end
 

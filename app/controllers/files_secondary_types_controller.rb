@@ -10,7 +10,11 @@ class FilesSecondaryTypesController < ApplicationController
 
   def create
     @files_secondary_type = FilesSecondaryType.new(files_secondary_type_params)
-    redirect_to action: 'index' if @files_secondary_type.save
+    if @files_secondary_type.save
+      redirect_to action: 'index'
+    else
+      render :new
+    end
   end
 
   def delete

@@ -10,7 +10,7 @@
             .form-group
               %label{:for => 'files_primary_type'}
                 = t('client_name')
-              = f.collection_select :client_id, Client.order(:name_en),:id,:name_en, {prompt: "Select"}, {class: 'form-control'}
+              = f.collection_select :client_id, Client.order(:name_en),:id, :name_en, {:include_blank => "select"}, {class: 'form-control client_id', onchange: 'get_primary_files(this.value);'}
             .form-group
               %label{:for => 'file_name_en'}
                 = t('file_english')
@@ -26,7 +26,8 @@
             .form-group
               %label{:for => 'transaction_date'}
                 = t('transaction_date')
-              = f.date_field :transaction_date, id: 'transaction_date', class: 'form-control datepicker'
+              - dater = @file.transaction_date.present? ? @file.transaction_date : Time.now.strftime("%Y-%m-%d")
+              = f.date_field :transaction_date, id: 'transaction_date', class: 'form-control datepicker', :value => dater
             .form-group
               %label{:for => 'file_number'}
                 = t('file_number')
@@ -34,17 +35,20 @@
             .form-group
               %label{:for => 'file_pr'}
                 = t('file_primary_type')
-              = select_tag "file_pr", content_tag(:option,'select one...',:value=>"") + options_from_collection_for_select(FilesPrimaryType.all, "id", "name_en", @file.files_secondary_type.try(:files_primary_type).try(:id)), {id: 'file_pr', class: 'form-control', onchange: 'get_secondary_files(this.value)'}
+              - if @file.files_secondary_type.present?
+                = select_tag "file_pr", content_tag(:option,'select one...',:value => "") + options_from_collection_for_select(FilesPrimaryType.where(:id => @file.files_secondary_type.try(:files_primary_type).try(:id)), "id", "name_en", @file.files_secondary_type.try(:files_primary_type).try(:id)), {id: 'file_pr', class: 'form-control', onchange: 'get_secondary_files(this.value)'}
+              - else
+                = select_tag "file_pr", content_tag(:option,'select one...',:value=>""), {id: 'file_pr', class: 'form-control', onchange: 'get_secondary_files(this.value)'}
             .form-group
               %label{:for => 'file_sc'}
                 = t('file_secondary_type')
               - if @file.files_secondary_type.present?
-                = select_tag "filer[files_secondary_type_id]", content_tag(:option,'select one...',:value=>"") + options_from_collection_for_select(@file.files_secondary_type.files_primary_type.files_secondary_types, "id", "name_en", @file.try(:files_secondary_type).try(:id)), {id: 'file_sc', class: 'form-control'}
+                = select_tag "filer[files_secondary_type_id]", content_tag(:option,'select one...',:value=>"") + options_from_collection_for_select(@file.files_secondary_type.try(:files_primary_type).try(:files_secondary_types), "id", "name_en", @file.try(:files_secondary_type).try(:id)), {id: 'file_sc', class: 'form-control'}
               - else
                 = select_tag "filer[files_secondary_type_id]", content_tag(:option,'select one...',:value=>"") , {id: 'file_sc', class: 'form-control'}
           .col-lg-1
           #yearly_filters.col-lg-5
-            - if @file.try(:yearly)
+            - if @file.try(:files_secondary_type).try(:files_primary_type).try(:yearly)
               :javascript
                 $('#yearly_filters').show();
             .form-group
@@ -52,18 +56,42 @@
                 = t('file_year')
               = f.text_field :year, id: 'year', class: 'form-control'
             .form-group
-              %label{:for => 'file_name_en'}
-                = t('file_english')
-              = f.date_field :name_en, id: 'file_name_en', class: 'form-control'
+              %label{:for => 'file_start_date'}
+                = t('file_start_date')
+              = f.date_field :file_start_date, id: 'file_start_date', class: 'form-control'
             .form-group
-              %label{:for => 'file_name_ar'}
-                = t('file_arabic')
-              = f.date_field :name_ar, id: 'file_name_en', class: 'form-control'
-        %button{:type => 'submit', :class => 'btn btn-default'}
-          = t('save')
+              %label{:for => 'file_end_date'}
+                = t('file_end_date')
+              = f.date_field :file_end_date, id: 'file_end_date', class: 'form-control'
+        .col-md-6
+          %button{:type => 'submit', :class => 'btn btn-default'}
+            = t('save')
+:javascript
+  function get_primary_files(val) {
+    $('#yearly_filters').hide();
+    $('#file_sc').empty();
+    $('#file_sc').append($("<option>select one... </option>").attr("value", ''));
+    $('#file_pr').empty();
+    $('#file_pr').append($("<option>select one... </option>").attr("value", ''));
+    var url = "#{files_check_pr_path}?client_id=" + val;
+    $.ajax({
+      type:"GET",
+      url:url,
+      success: function(data) {
+        secondary_files = data.primary;
+        for(i=0; i<secondary_files.length ;i++){
+          $('#file_pr').append($("<option>" + secondary_files[i].name_en + "</option>").attr("value", secondary_files[i].id));
+        }
+      }
+    });
+  }
 :javascript
   function get_secondary_files(val) {
-    var url = "#{files_check_pr_path}?pr=" + val;
+    client_id = $('.client_id').val();
+    $('#yearly_filters').hide();
+    $('#file_sc').empty();
+    $('#file_sc').append($("<option>select one... </option>").attr("value", ''));
+    var url = "#{files_check_sc_path}?client_id=" + client_id + "&pr=" + val;
     $.ajax({
       type:"GET",
       url:url,
@@ -71,8 +99,6 @@
         secondary_files = data.secondary;
         if(data.type == 1)
           $('#yearly_filters').show();
-        $('#file_sc').empty();
-        $('#file_sc').append($("<option>select one... </option>").attr("value", ''));
         for(i=0; i<secondary_files.length ;i++){
           $('#file_sc').append($("<option>" + secondary_files[i].name_en + "</option>").attr("value", secondary_files[i].id));
         }

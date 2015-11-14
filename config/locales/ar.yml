@@ -31,7 +31,7 @@ ar:
         greeting: تحية
       
         instruction: تعليمات
-      
+       
       reset_password_instructions:
         action: عمل
       
@@ -130,7 +130,7 @@ ar:
 
   file_secondary_types: أنواع الملفات الثانوية
 
-  files: الملفات
+  files: الوثائق
 
   files_primary_type: نوع الملفات الرئيسي
 

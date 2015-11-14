@@ -1,0 +1,42 @@
+:javascript
+  $('#setup_link').addClass('active');
+= stylesheet_link_tag 'setup'
+#wrapper
+  = render partial: 'home/sidebar'
+  #page-content-wrapper
+    .container-fluid
+      .row
+        .col-lg-12
+          %table.table-condensed.table-striped.full-width.table-bordered.table-hover
+            %tr
+              %th
+                = t('cilent_name')
+              %th
+                = t('secondary_type')
+              %th
+                = t('checked')
+            - FilesSecondaryType.where(:files_primary_type_id => @pr.id).each do |secondary|
+              %tr
+                %td
+                  = @connection.client.name_en
+                %td
+                  = secondary.name_en
+                %td
+                  - if (@secondary_files.where(:files_secondary_type_id => secondary.id).any?)
+                    = check_box_tag('selected[]', secondary.id, true, {:class => 'checkuncheck'})
+                  - else
+                    = check_box_tag('selected[]', secondary.id, false, {:class => 'checkuncheck'})
+
+:javascript
+  $('.checkuncheck').change(function () {
+    if($(this).prop('checked'))
+      var url = "#{connection_sc_update_path(:connection_id => @connection.id)}?do=add&secondary_id=" + $(this).attr('value');
+    else
+      var url = "#{connection_sc_update_path(:connection_id => @connection.id)}?do=delete&secondary_id=" + $(this).attr('value');
+    $.ajax({
+      type:"GET",
+      url:url,
+      success: function(data) {}
+      });
+
+  });

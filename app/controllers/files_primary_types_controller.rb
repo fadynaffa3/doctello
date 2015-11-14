@@ -10,7 +10,11 @@ class FilesPrimaryTypesController < ApplicationController
 
   def create
     @files_primary_type = FilesPrimaryType.new(files_primary_type_params)
-    redirect_to action: 'index' if @files_primary_type.save
+    if @files_primary_type.save
+      redirect_to action: 'index'
+    else
+      render :new
+    end
   end
 
   def delete

@@ -10,7 +10,9 @@ Rails.application.routes.draw do
     get "/ar", to: "home#switch"
     get "/en", to: "home#switch"
     get "setup", to: 'home#setup'
+    get "tree", to: 'tree#index'
     get "files/check_pr", to: 'files#check_pr'
+    get "files/check_sc", to: 'files#check_sc'
       resources :home
       resources :client_types
       resources :clients
@@ -18,7 +20,11 @@ Rails.application.routes.draw do
       resources :files_secondary_types
       resources :files
       resources :papers
-      get "tree", to: 'tree#index'
+      resources :connections do
+        get "destroy"
+        get "sc"
+        get "sc_update"
+      end
   end
 
   # Example of regular route:

@@ -24,3 +24,6 @@ tr:nth-of-type(odd) {background-color: #CCC !important}
 .clickable {cursor: pointer}
 .margined-bottom {margin-bottom: 10px}
 #yearly_filters{display: none}
+.field_with_errors{
+  input{border-color: red}
+}

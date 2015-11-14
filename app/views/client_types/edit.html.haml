@@ -15,7 +15,7 @@
             .form-group
               %label{:for => 'client_name_ar'}
                 = t('client_type_arabic')
-              = f.text_field :name_ar, id: 'client_name_en', class: 'form-control'
+              = f.text_field :name_ar, id: 'client_name_ar', class: 'form-control'
             .col-md-6
               %button{:type => 'submit', :class => 'btn btn-default'}
                 = t('save')
@@ -23,5 +23,3 @@
             .col-md-6
               %button{:type => 'submit', :class => 'btn btn-danger'}
                 = t('delete')
-
-

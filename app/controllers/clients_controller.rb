@@ -10,7 +10,11 @@ class ClientsController < ApplicationController
 
   def create
     @client = Client.new(client_params)
-    redirect_to action: 'index' if @client.save
+    if @client.save
+      redirect_to action: 'index'
+    else
+      render :new
+    end
   end
 
   def delete
