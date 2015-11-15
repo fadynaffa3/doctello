@@ -7,9 +7,6 @@ class CreateFilers < ActiveRecord::Migration
       t.string  :name_ar
       t.string  :notes
       t.date    :transaction_date
-      t.date    :year
-      t.date    :file_start_date
-      t.date    :file_end_date
       t.string  :file_number
 
       t.timestamps null: false

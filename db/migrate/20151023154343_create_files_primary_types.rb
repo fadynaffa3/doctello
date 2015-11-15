@@ -4,6 +4,7 @@ class CreateFilesPrimaryTypes < ActiveRecord::Migration
       t.string  :name_en
       t.string  :name_ar
       t.boolean :yearly
+      t.string :prefix
 
       t.timestamps null: false
     end

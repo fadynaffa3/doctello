@@ -48,9 +48,6 @@ ActiveRecord::Schema.define(version: 20151030074559) do
     t.string   "name_ar"
     t.string   "notes"
     t.date     "transaction_date"
-    t.date     "year"
-    t.date     "file_start_date"
-    t.date     "file_end_date"
     t.string   "file_number"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
@@ -60,6 +57,7 @@ ActiveRecord::Schema.define(version: 20151030074559) do
     t.string   "name_en"
     t.string   "name_ar"
     t.boolean  "yearly"
+    t.string   "prefix"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -68,6 +66,8 @@ ActiveRecord::Schema.define(version: 20151030074559) do
     t.integer  "files_primary_type_id"
     t.string   "name_en"
     t.string   "name_ar"
+    t.date     "year"
+    t.string   "prefix"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
   end
