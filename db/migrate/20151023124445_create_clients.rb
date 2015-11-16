@@ -6,9 +6,10 @@ class CreateClients < ActiveRecord::Migration
       t.string  :name_ar
       t.float   :registration_number
       t.date    :client_date
-      t.string   :national_number
-      t.string   :income_tax_number
-      t.string   :sales_tax_number
+      t.string  :national_number
+      t.string  :income_tax_number
+      t.string  :sales_tax_number
+      t.string  :prefix
 
       t.timestamps null: false
     end

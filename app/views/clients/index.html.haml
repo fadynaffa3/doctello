@@ -22,8 +22,6 @@
           %table.table-condensed.table-striped.full-width.table-bordered.table-hover
             %tr
               %th
-                = t('id')
-              %th
                 = t('client_type')
               %th
                 = t('name_english')
@@ -31,8 +29,6 @@
                 = t('name_arabic')
             - @clients.each do |client|
               %tr.clickable.client_row
-                %td
-                  = client.id
                 %td
                   = client.client_type.name_en
                 %td

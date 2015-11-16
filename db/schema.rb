@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20151030074559) do
   create_table "client_types", force: :cascade do |t|
     t.string   "name_en"
     t.string   "name_ar"
+    t.string   "prefix"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -29,6 +30,7 @@ ActiveRecord::Schema.define(version: 20151030074559) do
     t.string   "national_number"
     t.string   "income_tax_number"
     t.string   "sales_tax_number"
+    t.string   "prefix"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
   end

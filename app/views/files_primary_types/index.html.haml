@@ -22,15 +22,11 @@
           %table.table-condensed.table-striped.full-width.table-bordered.table-hover
             %tr
               %th
-                = t('id')
-              %th
                 = t('name_english')
               %th
                 = t('name_arabic')
             - @files_primary_types.each do |files_primary_type|
               %tr.clickable.files_primary_type_row
-                %td
-                  = files_primary_type.id
                 %td
                   = files_primary_type.name_en
                 %td

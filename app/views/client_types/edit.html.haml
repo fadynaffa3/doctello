@@ -16,6 +16,10 @@
               %label{:for => 'client_name_ar'}
                 = t('client_type_arabic')
               = f.text_field :name_ar, id: 'client_name_ar', class: 'form-control'
+            .form-group
+              %label{:for => 'prefix'}
+                = t('prefix')
+              = f.text_field :prefix, id: 'prefix', class: 'form-control'
             .col-md-6
               %button{:type => 'submit', :class => 'btn btn-default'}
                 = t('save')

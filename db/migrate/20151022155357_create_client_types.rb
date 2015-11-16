@@ -4,6 +4,7 @@ class CreateClientTypes < ActiveRecord::Migration
 
       t.string :name_en
       t.string :name_ar
+      t.string :prefix
 
       t.timestamps null: false
     end
