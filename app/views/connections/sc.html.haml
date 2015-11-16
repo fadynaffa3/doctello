@@ -18,9 +18,9 @@
             - FilesSecondaryType.where(:files_primary_type_id => @pr.id).each do |secondary|
               %tr
                 %td
-                  = @connection.client.name_en
+                  = @connection.client.send("name_"+locale.to_s)
                 %td
-                  = secondary.name_en
+                  = secondary.send("name_"+locale.to_s)
                 %td
                   - if (@secondary_files.where(:files_secondary_type_id => secondary.id).any?)
                     = check_box_tag('selected[]', secondary.id, true, {:class => 'checkuncheck'})

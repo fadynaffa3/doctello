@@ -47,22 +47,7 @@
                 = select_tag "filer[files_secondary_type_id]", content_tag(:option,'select one...',:value => "") , {id: 'file_sc', class: 'form-control'}
 
           .col-lg-1
-          #yearly_filters.col-lg-5
-            - if @file.try(:files_secondary_type).try(:files_primary_type).try(:yearly)
-              :javascript
-                $('#yearly_filters').show();
-            .form-group
-              %label{:for => 'year'}
-                = t('file_year')
-              = f.text_field :year, id: 'year', class: 'form-control'
-            .form-group
-              %label{:for => 'file_start_date'}
-                = t('file_start_date')
-              = f.date_field :file_start_date, id: 'file_start_date', class: 'form-control'
-            .form-group
-              %label{:for => 'file_end_date'}
-                = t('file_end_date')
-              = f.date_field :file_end_date, id: 'file_end_date', class: 'form-control'
+
         .col-md-6
           %button{:type => 'submit', :class => 'btn btn-default'}
             = t('save')
@@ -72,7 +57,6 @@
             = t('delete')
 :javascript
   function get_primary_files(val) {
-    $('#yearly_filters').hide();
     $('#file_sc').empty();
     $('#file_sc').append($("<option>select one... </option>").attr("value", ''));
     $('#file_pr').empty();
@@ -92,7 +76,6 @@
 :javascript
   function get_secondary_files(val) {
     client_id = $('.client_id').val();
-    $('#yearly_filters').hide();
     $('#file_sc').empty();
     $('#file_sc').append($("<option>select one... </option>").attr("value", ''));
     var url = "#{files_check_sc_path}?client_id=" +client_id +"&pr=" + val;
@@ -102,7 +85,6 @@
       success: function(data) {
         secondary_files = data.secondary;
         if(data.type == 1)
-          $('#yearly_filters').show();
         for(i=0; i<secondary_files.length ;i++){
           $('#file_sc').append($("<option>" + secondary_files[i].name_en + "</option>").attr("value", secondary_files[i].id));
         }

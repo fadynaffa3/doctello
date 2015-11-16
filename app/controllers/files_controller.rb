@@ -30,7 +30,6 @@ class FilesController < ApplicationController
 
   def edit
     @file = Filer.find(params[:id])
-    @file.year = @file.year.year
   end
 
   def update
@@ -61,8 +60,7 @@ class FilesController < ApplicationController
 
   def file_params
     pars = {}
-    pars = params.require(:filer).permit(:name_en, :name_ar, :client_id, :files_secondary_type_id, :notes, :transaction_date, :year, :file_start_date, :file_end_date, :file_number)
-    pars[:year] = Date.new(pars[:year].to_i)
+    pars = params.require(:filer).permit(:name_en, :name_ar, :client_id, :files_secondary_type_id, :notes, :transaction_date, :file_number)
     pars
   end
 end

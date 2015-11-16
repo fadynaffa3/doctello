@@ -47,6 +47,6 @@ class ClientTypesController < ApplicationController
   private
 
   def client_type_params
-    params.require(:client_type).permit(:name_en, :name_ar)
+    params.require(:client_type).permit(:name_en, :name_ar, :prefix)
   end
 end

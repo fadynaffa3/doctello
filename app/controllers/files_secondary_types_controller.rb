@@ -36,6 +36,6 @@ class FilesSecondaryTypesController < ApplicationController
   private
 
   def files_secondary_type_params
-    params.require(:files_secondary_type).permit(:name_en, :name_ar, :files_primary_type_id)
+    params.require(:files_secondary_type).permit(:name_en, :name_ar, :files_primary_type_id, :prefix)
   end
 end

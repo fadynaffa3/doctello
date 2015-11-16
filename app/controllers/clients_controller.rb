@@ -40,6 +40,6 @@ class ClientsController < ApplicationController
   private
 
   def client_params
-    params.require(:client).permit(:name_en, :name_ar, :client_type_id, :registration_number, :client_date, :national_number, :income_tax_number, :sales_tax_number)
+    params.require(:client).permit(:name_en, :name_ar, :client_type_id, :registration_number, :client_date, :national_number, :income_tax_number, :sales_tax_number, :prefix)
   end
 end

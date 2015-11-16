@@ -30,9 +30,9 @@
             - @primaries.each do |primary|
               %tr.clickable.primary_row
                 %td
-                  = primary.client.name_en
+                  = primary.client.send("name_"+locale.to_s)
                 %td
-                  = primary.files_primary_type.name_en
+                  = primary.files_primary_type.send("name_"+locale.to_s)
                 %td
                   %form{:method => 'delete', :action => connection_destroy_path(:connection_id => primary.id)}
                     %button{:type => 'submit', :class => 'btn btn-danger'}

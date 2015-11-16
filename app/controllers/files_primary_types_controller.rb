@@ -42,6 +42,6 @@ class FilesPrimaryTypesController < ApplicationController
   private
 
   def files_primary_type_params
-    params.require(:files_primary_type).permit(:name_en, :name_ar, :yearly)
+    params.require(:files_primary_type).permit(:name_en, :name_ar, :yearly, :prefix)
   end
 end
