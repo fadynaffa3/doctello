@@ -25,12 +25,16 @@
                 = t('name_english')
               %th
                 = t('name_arabic')
+              %th
+                = t('prefix')
             - @client_types.each do |client_type|
               %tr.clickable.client_type_row
                 %td
                   = client_type.name_en
                 %td
                   = client_type.name_ar
+                %td
+                  = client_type.prefix
               :javascript
                 $('.client_type_row').last().data('link', "#{edit_client_type_path(:id => client_type.id)}");
           .row
