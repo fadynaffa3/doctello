@@ -18,98 +18,105 @@ ar:
   clients: العملاء
 
   delete: حذف
+  types_connections: "ربط الملفات"
+  client_name: "اسم العميل"
+  secondary_type: "ملف ثانوي"
+  checked: "محتار"
+  cilent_name: "اسم العميل"
+  primary_type: "ملف أساسي"
+  prefix: "مختصر"
 
   devise:
     confirmations:
       new:
         resend_confirmation_instructions: إعادة إرسال رسالة تأكيد التعليمات
-      
+
     mailer:
       confirmation_instructions:
         action: عمل
-      
+
         greeting: تحية
-      
+
         instruction: تعليمات
-       
+
       reset_password_instructions:
         action: عمل
-      
+
         greeting: تحية
-      
+
         instruction: تعليمات
-      
+
         instruction_2: تعليمات 2
-      
+
         instruction_3: تعليمات 3
-      
+
       unlock_instructions:
         action: عمل
-      
+
         greeting: تحية
-      
+
         instruction: تعليمات
-      
+
         message: رسالة
-      
+
     passwords:
       edit:
         change_my_password: تغيير كلمة المرور الخاصة بي
-      
+
         change_your_password: تغيير كلمة المرور الخاصة بك
-      
+
         confirm_new_password: تأكيد كلمة المرور الجديدة
-      
+
         new_password: كلمة المرور الجديدة
-      
+
       new:
         forgot_your_password: نسيت كلمة المرور الخاصة بك
-      
+
         send_me_reset_password_instructions: إرسال لي إرشادات كلمة المرور إعادة تعيين
-      
+
     registrations:
       edit:
         are_you_sure: هل أنت متأكد
-      
+
         back: مرة أخرى
-      
+
         cancel_my_account: إلغاء الحساب الخاص بي
-      
+
         leave_blank_if_you_don_t_want_to_change_it: اترك المساحة فارغة إذا كنت لا تريد تغييره t
-      
+
         title: العنوان
-      
+
         unhappy: سعيدة
-      
+
         update: التحديث
-      
+
         we_need_your_current_password_to_confirm_your_changes: ونحن بحاجة إلى كلمة المرور الحالية لتأكيد التغييرات الخاصة بك
-      
+
       new:
         sign_up: التسجيل
-      
+
     sessions:
       new:
         sign_in: تسجيل الدخول
-      
+
     shared:
       links:
         didn_t_receive_confirmation_instructions: تي ديدن تلقي تعليمات تأكيد
-      
+
         didn_t_receive_unlock_instructions: تلقي تي ديدن فتح التعليمات
-      
+
         forgot_your_password: نسيت كلمة المرور الخاصة بك
-      
+
         sign_in: تسجيل الدخول
-      
+
         sign_in_with_provider: تسجيل الدخول باستخدام موفر
-      
+
         sign_up: التسجيل
-      
+
     unlocks:
       new:
         resend_unlock_instructions: إعادة إرسال فتح التعليمات
-      
+
   doctello: دوكتيلو
 
   document: الوثيقة

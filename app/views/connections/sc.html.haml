@@ -7,6 +7,10 @@
     .container-fluid
       .row
         .col-lg-12
+          %table
+            %tr
+              %td
+                = @connection.files_primary_type.send("name_"+locale.to_s)
           %table.table-condensed.table-striped.full-width.table-bordered.table-hover
             %tr
               %th
