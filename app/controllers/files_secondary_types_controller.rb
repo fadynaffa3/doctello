@@ -30,12 +30,12 @@ class FilesSecondaryTypesController < ApplicationController
 
   def update
     @files_secondary_type = FilesSecondaryType.find(params[:id])
-    redirect_to action: 'index' if @files_secondary_type.update(files_secondary_type_params)
+    redirect_to action: 'index' if @files_secondary_type.update_attributes(files_secondary_type_params)
   end
 
   private
 
   def files_secondary_type_params
-    params.require(:files_secondary_type).permit(:name_en, :name_ar, :files_primary_type_id, :prefix)
+    params.require(:files_secondary_type).permit(:name_en, :name_ar, :files_primary_type_id, :prefix, :year)
   end
 end

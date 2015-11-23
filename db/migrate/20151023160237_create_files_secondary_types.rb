@@ -4,7 +4,7 @@ class CreateFilesSecondaryTypes < ActiveRecord::Migration
       t.integer :files_primary_type_id
       t.string  :name_en
       t.string  :name_ar
-      t.date    :year
+      t.string  :year
       t.string  :prefix
 
       t.timestamps null: false

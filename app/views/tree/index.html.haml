@@ -1,4 +1,14 @@
 = stylesheet_link_tag 'tree.css'
+.row
+  .col-sm-6.col-lg-6.col-md-6
+    %select.form-control.yearly
+      %option{:value => 0}
+        All Files
+      - (1900..2020).each do |i|
+        %option{:value => i}
+          = i
+  .col-md-6.col-sm-6.col-lg-6
+    %span.glyphicon.glyphicon-remove.remove
 #jstree
   %ul
     %li
@@ -6,19 +16,20 @@
       %ul
         - @client_types.each do |client_type|
           %li
-            = link_to (client_type.name_en + "-----------------------" + t('client_type')), client_type_path(:id => client_type.id), :method => 'get'
+            = link_to (client_type.send("name_" + locale.to_s) + "-----------------------" + t('client_type')), client_type_path(:id => client_type.id), :method => 'get'
             %ul
               - client_type.clients.each do |client|
                 %li
-                  = link_to (client.name_en + "-----------------------" + t('clients')), client_path(:id => client.id), :method => 'get'
+                  = link_to (client.send("name_" + locale.to_s) + "-----------------------" + t('clients')), client_path(:id => client.id), :method => 'get'
                   %ul
                     - client.filers.each do |file|
-                      %li
-                        = link_to (file.name_en + "-----------------------" + t('files')), file_path(:id => file.id), :method => 'get'
-                        %ul
-                          - file.papers.each do |paper|
-                            %li{:'data-jstree' => '{ "type" : "file" }'}
-                              = link_to paper.order+'doc', paper.url.url(:original, false), :target => '_blank'
+                      - if (@year && file.files_secondary_type.files_primary_type.yearly && file.files_secondary_type.year == @year) || (! @year)
+                        %li
+                          = link_to (file.send("name_" + locale.to_s) + "-----------------------" + t('files')), file_path(:id => file.id), :method => 'get'
+                          %ul
+                            - file.papers.each do |paper|
+                              %li{:'data-jstree' => '{ "type" : "file" }'}
+                                = link_to paper.order + 'doc', paper.url.url(:original, false), :target => '_blank'
 :javascript
   $('#tree_link').addClass('active');
   $('#jstree').jstree({
@@ -35,4 +46,7 @@
       "dnd", "search",
       "state", "types", "wholerow"
     ]
+  });
+  $('.yearly').change(function() {
+    window.location.href = "#{tree_path}?year="+$(this).val();
   });
