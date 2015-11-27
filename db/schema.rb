@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20151030074559) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "client_types", force: :cascade do |t|
     t.string   "name_en"
     t.string   "name_ar"
@@ -101,7 +104,15 @@ ActiveRecord::Schema.define(version: 20151030074559) do
     t.datetime "updated_at",                          null: false
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "clients", "client_types"
+  add_foreign_key "connections", "clients"
+  add_foreign_key "connections", "files_primary_types"
+  add_foreign_key "connections", "files_secondary_types"
+  add_foreign_key "filers", "clients"
+  add_foreign_key "filers", "files_secondary_types"
+  add_foreign_key "files_secondary_types", "files_primary_types"
+  add_foreign_key "papers", "filers"
 end
