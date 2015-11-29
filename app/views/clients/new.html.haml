@@ -10,8 +10,11 @@
           = form_for @client, url: {action: "create"} do |f|
             .form-group
               %label{:for => 'client_type'}
-                = t('client_type_english')
-              = f.collection_select :client_type_id, ClientType.order(:name_en),:id,:name_en, {prompt: "Select"}, {class: 'form-control'}
+                = t('client_type')
+              - if locale == 'en'
+                = f.collection_select :client_type_id, ClientType.order(:name_en),:id,:name_en, {prompt: "Select"}, {class: 'form-control'}
+              - else
+                = f.collection_select :client_type_id, ClientType.order(:name_en),:id,:name_ar, {prompt: "Select"}, {class: 'form-control'}
             .form-group
               %label{:for => 'client_name_en'}
                 = t('client_english')

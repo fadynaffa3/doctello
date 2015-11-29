@@ -11,7 +11,10 @@
             .form-group
               %label{:for => 'files_secondary_type_type'}
                 = t('files_secondary_type_english')
-              = f.collection_select :files_primary_type_id, FilesPrimaryType.order(:name_en),:id,:name_en, {prompt: "Select"}, {class: 'form-control'}
+              - if locale == 'en'
+                = f.collection_select :files_primary_type_id, FilesPrimaryType.order(:name_en),:id,:name_en, {prompt: "Select"}, {class: 'form-control'}
+              - else
+                = f.collection_select :files_primary_type_id, FilesPrimaryType.order(:name_ar),:id,:name_ar, {prompt: "Select"}, {class: 'form-control'}
             .form-group
               %label{:for => 'files_secondary_type_name_en'}
                 = t('files_secondary_type_english')

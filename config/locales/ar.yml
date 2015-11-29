@@ -17,6 +17,12 @@ ar:
 
   clients: العملاء
 
+  client_arabic: "اسم العميل بالعربية"
+  registration_number: "رقم التسجيل"
+  client_date: "تاريخ تسجيل العميل"
+  national_number: "الرقم الوطني"
+  income_tax_number: "الرقم الضريبي"
+  sales_tax_number: "رقم ضريبة المبيعات"
   delete: حذف
   types_connections: "ربط الملفات"
   client_name: "اسم العميل"
@@ -25,6 +31,9 @@ ar:
   cilent_name: "اسم العميل"
   primary_type: "ملف أساسي"
   prefix: "مختصر"
+  yearly_file: "ملف سنوي"
+  year: "السنة"
+  client: "العميل"
 
   devise:
     confirmations:
