@@ -11,9 +11,9 @@
               %label{:for => 'files_primary_type'}
                 = t('client_name')
               - if locale == 'en'
-                = f.collection_select :client_id, Client.order(:name_en),:id, :name_en, {:include_blank => "select"}, {class: 'form-control', onchange: 'get_primary_files(this.value);', :include_blank => true}
+                = f.collection_select :client_id, Client.order(:name_en),:id, :name_en, {:include_blank => "select"}, {class: 'form-control client_id', onchange: 'get_primary_files(this.value);', :include_blank => true}
               - else
-                = f.collection_select :client_id, Client.order(:name_en),:id, :name_ar, {:include_blank => "select"}, {class: 'form-control', onchange: 'get_primary_files(this.value);', :include_blank => true}
+                = f.collection_select :client_id, Client.order(:name_en),:id, :name_ar, {:include_blank => "select"}, {class: 'form-control client_id', onchange: 'get_primary_files(this.value);', :include_blank => true}
             .form-group
               %label{:for => 'file_name_en'}
                 = t('file_english')
