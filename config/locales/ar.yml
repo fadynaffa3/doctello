@@ -17,7 +17,10 @@ ar:
   client_type_english: نوع العميل اللغة الإنجليزية
   files_secondary_type: "الملفات الثانوية"
   clients: العملاء
-
+  transaction_date: "تاريخ الحركة"
+  file_number: "رقم الملف"
+  file_primary_type: "الملف الرئيسي"
+  file_secondary_type: "الملف الثانوي"
   client_arabic: "اسم العميل بالعربية"
   registration_number: "رقم التسجيل"
   client_date: "تاريخ تسجيل العميل"
