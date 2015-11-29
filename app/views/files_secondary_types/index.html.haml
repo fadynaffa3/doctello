@@ -27,6 +27,8 @@
                 = t('name_english')
               %th
                 = t('name_arabic')
+              %th
+                = t('prefix')
             - @files_secondary_types.each do |files_secondary_type|
               %tr.clickable.files_secondary_type_row
                 %td
@@ -35,6 +37,8 @@
                   = files_secondary_type.name_en
                 %td
                   = files_secondary_type.name_ar
+                %td
+                  = files_secondary_type.prefix
               :javascript
                 $('.files_secondary_type_row').last().data('link', "#{edit_files_secondary_type_path(:id => files_secondary_type.id)}");
           .row

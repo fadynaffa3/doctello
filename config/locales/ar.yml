@@ -1,6 +1,7 @@
 ar:
   add: إضافة
-
+  yearly: "سنوي"
+  primary_file_name: "اسم الملف الأساسي"
   arabic: العربية
 
   choose_setup_field: اختر حقل الإعداد
@@ -14,7 +15,7 @@ ar:
   client_type_arabic: العميل اكتب عربي
 
   client_type_english: نوع العميل اللغة الإنجليزية
-
+  files_secondary_type: "الملفات الثانوية"
   clients: العملاء
 
   client_arabic: "اسم العميل بالعربية"

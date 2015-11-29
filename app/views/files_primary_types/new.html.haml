@@ -17,6 +17,10 @@
                 = t('files_primary_type_arabic')
               = f.text_field :name_ar, id: 'file_name_en', class: 'form-control'
             .form-group
+              %label{:for => 'prefix'}
+                = t('prefix')
+              = f.text_field :prefix, id: 'prefix', class: 'form-control'
+            .form-group
               %label{:for => 'yearly'}
                 = t('yearly_file')
               = f.check_box :yearly, id: 'yearly'
