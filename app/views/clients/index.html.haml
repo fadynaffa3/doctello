@@ -27,6 +27,8 @@
                 = t('name_english')
               %th
                 = t('name_arabic')
+              %th
+                = t('prefix')
             - @clients.each do |client|
               %tr.clickable.client_row
                 %td
@@ -35,6 +37,8 @@
                   = client.name_en
                 %td
                   = client.name_ar
+                %td
+                  = client.prefix
               :javascript
                 $('.client_row').last().data('link', "#{edit_client_path(:id => client.id)}");
           .row

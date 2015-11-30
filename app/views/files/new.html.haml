@@ -32,10 +32,6 @@
               - dater = @file.transaction_date.present? ? @file.transaction_date : Time.now.strftime("%Y-%m-%d")
               = f.date_field :transaction_date, id: 'transaction_date', class: 'form-control datepicker', :value => dater
             .form-group
-              %label{:for => 'file_number'}
-                = t('file_number')
-              = f.text_field :file_number, id: 'file_number', class: 'form-control'
-            .form-group
               %label{:for => 'file_pr'}
                 = t('file_primary_type')
               - if @file.files_secondary_type.present?

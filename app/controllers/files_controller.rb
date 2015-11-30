@@ -10,6 +10,8 @@ class FilesController < ApplicationController
 
   def create
     @file = Filer.new(file_params)
+    count = Filer.where(:files_secondary_type => @file.files_secondary_type).where(:client_id => @file.client_id).count + 1
+    @file.file_number = @file.client.prefix + "_" + @file.files_secondary_type.files_primary_type.prefix + "_" + @file.files_secondary_type.prefix + "_" + count.to_s
     if @file.save
       redirect_to new_paper_path(:file_id => @file.id)
     else

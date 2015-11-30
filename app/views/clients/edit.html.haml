@@ -43,6 +43,10 @@
               %label{:for => 'sales_tax_number'}
                 = t('sales_tax_number')
               = f.text_field :sales_tax_number, id: 'sales_tax_number', class: 'form-control'
+            .form-group
+              %label{:for => 'prefix'}
+                = t('prefix')
+              = f.text_field :prefix, id: 'prefix', class: 'form-control'
             .col-md-6
               %button{:type => 'submit', :class => 'btn btn-default'}
                 = t('save')
