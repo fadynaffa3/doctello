@@ -2,11 +2,15 @@
 .row
   .col-sm-6.col-lg-6.col-md-6
     %select.form-control.yearly
-      %option{:value => 0}
+      %option{:value => 0, :selected => 'true'}
         All Files
-      - (1900..2020).each do |i|
-        %option{:value => i}
-          = i
+      - (1970..2020).each do |i|
+        - if @year.to_i == i.to_i
+          %option{:value => i, :selected => 'true'}
+            = i
+        - else
+          %option{:value => i}
+            = i
   .col-md-6.col-sm-6.col-lg-6
     %span.glyphicon.glyphicon-remove.remove
 #jstree
@@ -63,3 +67,7 @@
   $('.yearly').change(function() {
     window.location.href = "#{tree_path}?year="+$(this).val();
   });
+  $('.remove').click(function() {
+    window.location.href = "#{tree_path}";
+  });
+

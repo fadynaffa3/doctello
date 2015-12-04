@@ -6,15 +6,15 @@ ar:
 
   choose_setup_field: اختر حقل الإعداد
 
-  client_english: الإنجليزية العميل
+  client_english: اسم العميل بالأنجليزية
 
   client_name: اسم العميل
 
   client_type: نوع العميل
 
-  client_type_arabic: العميل اكتب عربي
+  client_type_arabic: نوع العميل بالعربي
 
-  client_type_english: نوع العميل اللغة الإنجليزية
+  client_type_english: نوع العميل بالإنجليزية
   files_secondary_type: "الملفات الثانوية"
   clients: العملاء
   transaction_date: "تاريخ الحركة"
@@ -29,7 +29,6 @@ ar:
   sales_tax_number: "رقم ضريبة المبيعات"
   delete: حذف
   types_connections: "ربط الملفات"
-  client_name: "اسم العميل"
   secondary_type: "ملف ثانوي"
   checked: "محتار"
   cilent_name: "اسم العميل"
@@ -138,11 +137,11 @@ ar:
 
   english: الإنكليزية
 
-  file_arabic: ملف اللغة العربية
+  file_arabic: اسم الملف اللغة العربية
 
-  file_attachment: ملف مرفق
+  file_attachment: مرفق
 
-  file_english: ملف اللغة الإنجليزية
+  file_english: اسم ملف باللغة الإنجليزية
 
   file_name: اسم الملف
 
@@ -154,27 +153,26 @@ ar:
 
   files_primary_type: نوع الملفات الرئيسي
 
-  files_primary_type_arabic: كتابة ملفات الابتدائي اللغة العربية
+  files_primary_type_arabic: اسم نوع الملف الأساسي بالعربية
 
-  files_primary_type_english: نوع الملفات الأساسية الإنجليزية
+  files_primary_type_english: اسم نوع الملف الأساسي باﻷنجليزية
 
-  files_secondary_type_arabic: نوع الملفات الثانوية العربية
+  files_secondary_type_arabic: اسم توع الملف الثانوي بالعربية
 
-  files_secondary_type_english: نوع الملفات الثانوية الإنجليزية
+  files_secondary_type_english: اسم نوع الملف الثانوي باﻷنجليزية
 
-  hello: مرحبا بالعالم
-
+  hello: مرحبا
   home: الصفحة الرئيسية
 
   id: معرف
 
   logout: تسجيل الخروج
 
-  name_arabic: اسم اللغة العربية
+  name_arabic: اسم باللغة العربية
 
-  name_english: اسم الإنجليزية
+  name_english: اسم بالإنجليزية
 
-  notes: وتلاحظ
+  notes: ملاجظات
 
   order: ترتيب
 

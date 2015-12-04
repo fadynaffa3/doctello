@@ -14,6 +14,20 @@
                 = f.collection_select :client_id, Client.order(:name_en),:id, :name_en, {:include_blank => "select"}, {class: 'form-control', onchange: 'get_primary_files(this.value);', :include_blank => true}
               - else
                 = f.collection_select :client_id, Client.order(:name_en),:id, :name_ar, {:include_blank => "select"}, {class: 'form-control', onchange: 'get_primary_files(this.value);', :include_blank => true}
+            .form-group
+              %label{:for => 'file_pr'}
+                = t('file_primary_type')
+              - if @file.files_secondary_type.present?
+                = select_tag "file_pr", content_tag(:option,'select one...',:value => "") + options_from_collection_for_select(FilesPrimaryType.where(:id => @file.files_secondary_type.try(:files_primary_type).try(:id)), "id", "name_" + locale.to_s, @file.files_secondary_type.try(:files_primary_type).try(:id)), {id: 'file_pr', class: 'form-control', onchange: 'get_secondary_files(this.value)'}
+              - else
+                = select_tag "file_pr", content_tag(:option,'select one...',:value => ""), {id: 'file_pr', class: 'form-control', onchange: 'get_secondary_files(this.value)'}
+            .form-group
+              %label{:for => 'file_sc'}
+                = t('file_secondary_type')
+              - if @file.files_secondary_type.present?
+                = select_tag "filer[files_secondary_type_id]", content_tag(:option,'select one...',:value => "") + options_from_collection_for_select(@file.files_secondary_type.files_primary_type.files_secondary_types, "id", "name_" + locale.to_s, @file.try(:files_secondary_type).try(:id)), {id: 'file_sc', class: 'form-control'}
+              - else
+                = select_tag "filer[files_secondary_type_id]", content_tag(:option,'select one...',:value => "") , {id: 'file_sc', class: 'form-control'}
 
             .form-group
               %label{:for => 'file_name_en'}
@@ -35,21 +49,6 @@
               %label{:for => 'file_number'}
                 = t('file_number')
               = f.text_field :file_number, id: 'file_number', class: 'form-control'
-            .form-group
-              %label{:for => 'file_pr'}
-                = t('file_primary_type')
-              - if @file.files_secondary_type.present?
-                = select_tag "file_pr", content_tag(:option,'select one...',:value => "") + options_from_collection_for_select(FilesPrimaryType.where(:id => @file.files_secondary_type.try(:files_primary_type).try(:id)), "id", "name_" + locale.to_s, @file.files_secondary_type.try(:files_primary_type).try(:id)), {id: 'file_pr', class: 'form-control', onchange: 'get_secondary_files(this.value)'}
-              - else
-                = select_tag "file_pr", content_tag(:option,'select one...',:value => ""), {id: 'file_pr', class: 'form-control', onchange: 'get_secondary_files(this.value)'}
-            .form-group
-              %label{:for => 'file_sc'}
-                = t('file_secondary_type')
-              - if @file.files_secondary_type.present?
-                = select_tag "filer[files_secondary_type_id]", content_tag(:option,'select one...',:value => "") + options_from_collection_for_select(@file.files_secondary_type.files_primary_type.files_secondary_types, "id", "name_" + locale.to_s, @file.try(:files_secondary_type).try(:id)), {id: 'file_sc', class: 'form-control'}
-              - else
-                = select_tag "filer[files_secondary_type_id]", content_tag(:option,'select one...',:value => "") , {id: 'file_sc', class: 'form-control'}
-
           .col-lg-1
 
         .col-md-6
